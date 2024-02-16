@@ -5,8 +5,11 @@ const CONFIG = {
 
   // Top notification bar scrolling content on the homepage, leave empty if not needed []
   HEO_NOTICE_BAR: [
-    // { title: 'Welcome to my blog', url: 'https://blog.tangly1024.com' },
-    // { title: 'Visit the documentation center for more help', url: 'https://docs.tangly1024.com' }
+    { title: 'Welcome to JoyBlogs', url: 'https://joyboy.ae/' },
+    {
+      title: 'Keep up with the latest news related to us',
+      url: 'https://joyboy.ae/'
+    }
   ],
 
   // Reverse position of components on the left and right side of the hero area
@@ -15,17 +18,27 @@ const CONFIG = {
   HEO_HERO_BODY_REVERSE: false,
 
   // Hero area (top big card on the homepage)
-  HEO_HERO_TITLE_1: 'Web Development',
-  HEO_HERO_TITLE_2: 'and App Development',
-  HEO_HERO_TITLE_3: 'JOYBOY.AE',
-  HEO_HERO_TITLE_4: 'New Version Online for Apple Vision Pro',
-  HEO_HERO_TITLE_5: 'Joyboy.ae\'s CryptoCharts',
-  HEO_HERO_TITLE_LINK: 'https://www.joyboy.ae/crypto-charts',
+  HEO_HERO_TITLE_1: 'Hire a full-fledged',
+  HEO_HERO_TITLE_2: 'software development team',
+  HEO_HERO_TITLE_3:
+    'We possess the capability to manage intricate mobile and web software projects throughout the entire process, from initial exploration to final delivery.',
+  HEO_HERO_TITLE_4: 'App development',
+  HEO_HERO_TITLE_5: 'Explore projects in UAE region',
+  HEO_HERO_TITLE_LINK: 'https://joyboy.ae/',
 
   // Display three featured categories in the hero area
-  HEO_HERO_CATEGORY_1: { title: 'Must-Read Selection', url: '/tag/must-read-selection' },
-  HEO_HERO_CATEGORY_2: { title: 'Popular Articles', url: '/tag/popular-articles' },
-  HEO_HERO_CATEGORY_3: { title: 'Practical Tutorials', url: '/tag/practical-tutorials' },
+  HEO_HERO_CATEGORY_1: {
+    title: 'Must-Read Selection',
+    url: '/tag/must-read-selection'
+  },
+  HEO_HERO_CATEGORY_2: {
+    title: 'Popular Articles',
+    url: '/tag/popular-articles'
+  },
+  HEO_HERO_CATEGORY_3: {
+    title: 'Practical Tutorials',
+    url: '/tag/practical-tutorials'
+  },
 
   // Recommended article tags on the right side of the hero area, e.g. [Recommended], up to six articles; leave blank '' to recommend the most recently updated articles
   HEO_HERO_RECOMMEND_POST_TAG: 'Recommended',
@@ -108,7 +121,8 @@ const CONFIG = {
   HEO_SOCIAL_CARD_TITLE_1: 'Communication Channel',
   HEO_SOCIAL_CARD_TITLE_2: 'Join our community for discussion and sharing',
   HEO_SOCIAL_CARD_TITLE_3: 'Click to join the community',
-  HEO_SOCIAL_CARD_URL: 'https://api.whatsapp.com/send/?phone=971506189848&text&type=phone_number&app_absent=0',
+  HEO_SOCIAL_CARD_URL:
+    'https://api.whatsapp.com/send/?phone=971506189848&text&type=phone_number&app_absent=0',
 
   // *****  The following configurations are invalid, just reserved for development ****
   // Menu configuration

@@ -47,11 +47,7 @@ import { siteConfig } from '@/lib/config'
  * @constructor
  */
 const LayoutBase = props => {
-  const {
-    children,
-    slotTop,
-    className
-  } = props
+  const { children, slotTop, className } = props
 
   // 全屏模式下的最大宽度
   const { fullWidth } = useGlobal()
@@ -63,29 +59,33 @@ const LayoutBase = props => {
       <NavBar {...props} />
 
       {/* 通知横幅 */}
-      {router.route === '/'
-        ? <>
-            <NoticeBar />
-            <Hero {...props} />
+      {router.route === '/' ? (
+        <>
+          <NoticeBar />
+          <Hero {...props} />
         </>
-        : null}
+      ) : null}
       {fullWidth ? null : <PostHeader {...props} />}
     </header>
   )
 
   // 右侧栏 用户信息+标签列表
-  const slotRight = (router.route === '/404' || fullWidth) ? null : <SideRight {...props} />
+  const slotRight =
+    router.route === '/404' || fullWidth ? null : <SideRight {...props} />
 
   const maxWidth = fullWidth ? 'max-w-[96rem] mx-auto' : 'max-w-[86rem]' // 普通最大宽度是86rem和顶部菜单栏对齐，留空则与窗口对齐
 
-  const HEO_HERO_BODY_REVERSE = siteConfig('HEO_HERO_BODY_REVERSE', false, CONFIG)
+  const HEO_HERO_BODY_REVERSE = siteConfig(
+    'HEO_HERO_BODY_REVERSE',
+    false,
+    CONFIG
+  )
 
   return (
     <div
       id="theme-heo"
       className="bg-[#f7f9fe] dark:bg-[#18171d] h-full min-h-screen flex flex-col"
     >
-
       <Style />
 
       {/* 顶部嵌入 导航栏，首页放hero，文章页放文章详情 */}
@@ -98,9 +98,7 @@ const LayoutBase = props => {
       >
         <div
           id="container-inner"
-          className={
-            `${HEO_HERO_BODY_REVERSE ? 'flex-row-reverse' : ''} w-full mx-auto lg:flex justify-center relative z-10`
-          }
+          className={`${HEO_HERO_BODY_REVERSE ? 'flex-row-reverse' : ''} w-full mx-auto lg:flex justify-center relative z-10`}
         >
           <div className={`w-full h-auto ${className || ''}`}>
             {/* 主区上部嵌入 */}
@@ -108,14 +106,12 @@ const LayoutBase = props => {
             {children}
           </div>
 
-          <div className='lg:px-2'></div>
+          {/* <div className="lg:px-2"></div>
 
           <div className="hidden xl:block">
-            {/* 主区快右侧 */}
             {slotRight}
-          </div>
+          </div> */}
         </div>
-
       </main>
 
       {/* 页脚 */}
@@ -132,17 +128,15 @@ const LayoutBase = props => {
  */
 const LayoutIndex = props => {
   return (
-      <div id="post-outer-wrapper" className="px-5 md:px-0">
-        {/* 文章分类条 */}
-        <CategoryBar {...props} />
-        {siteConfig('POST_LIST_STYLE') === 'page'
-          ? (
-            <BlogPostListPage {...props} />
-            )
-          : (
-            <BlogPostListScroll {...props} />
-            )}
-      </div>
+    <div id="post-outer-wrapper" className="px-5 md:px-0">
+      {/* 文章分类条 */}
+      <CategoryBar {...props} />
+      {siteConfig('POST_LIST_STYLE') === 'page' ? (
+        <BlogPostListPage {...props} />
+      ) : (
+        <BlogPostListScroll {...props} />
+      )}
+    </div>
   )
 }
 
@@ -153,17 +147,15 @@ const LayoutIndex = props => {
  */
 const LayoutPostList = props => {
   return (
-      <div id="post-outer-wrapper" className="px-5  md:px-0">
-        {/* 文章分类条 */}
-        <CategoryBar {...props} />
-        {siteConfig('POST_LIST_STYLE') === 'page'
-          ? (
-            <BlogPostListPage {...props} />
-            )
-          : (
-            <BlogPostListScroll {...props} />
-            )}
-      </div>
+    <div id="post-outer-wrapper" className="px-5  md:px-0">
+      {/* 文章分类条 */}
+      <CategoryBar {...props} />
+      {siteConfig('POST_LIST_STYLE') === 'page' ? (
+        <BlogPostListPage {...props} />
+      ) : (
+        <BlogPostListScroll {...props} />
+      )}
+    </div>
   )
 }
 
@@ -193,26 +185,19 @@ const LayoutSearch = props => {
     }
   }, [])
   return (
-    <div
-      {...props}
-      currentSearch={currentSearch}
-    >
+    <div {...props} currentSearch={currentSearch}>
       <div id="post-outer-wrapper" className="px-5  md:px-0">
-        {!currentSearch
-          ? (
-            <SearchNav {...props} />
-            )
-          : (
-            <div id="posts-wrapper">
-              {siteConfig('POST_LIST_STYLE') === 'page'
-                ? (
-                  <BlogPostListPage {...props} />
-                  )
-                : (
-                  <BlogPostListScroll {...props} />
-                  )}
-            </div>
+        {!currentSearch ? (
+          <SearchNav {...props} />
+        ) : (
+          <div id="posts-wrapper">
+            {siteConfig('POST_LIST_STYLE') === 'page' ? (
+              <BlogPostListPage {...props} />
+            ) : (
+              <BlogPostListScroll {...props} />
             )}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -229,20 +214,20 @@ const LayoutArchive = props => {
   // 归档页顶部显示条，如果是默认归档则不显示。分类详情页显示分类列表，标签详情页显示当前标签
 
   return (
-      <div className="p-5 rounded-xl border dark:border-gray-600 max-w-6xl w-full bg-white dark:bg-[#1e1e1e]">
-        {/* 文章分类条 */}
-        <CategoryBar {...props} border={false} />
+    <div className="p-5 rounded-xl border dark:border-gray-600 max-w-6xl w-full bg-white dark:bg-[#1e1e1e]">
+      {/* 文章分类条 */}
+      <CategoryBar {...props} border={false} />
 
-        <div className="px-3">
-          {Object.keys(archivePosts).map(archiveTitle => (
-            <BlogPostArchive
-              key={archiveTitle}
-              posts={archivePosts[archiveTitle]}
-              archiveTitle={archiveTitle}
-            />
-          ))}
-        </div>
+      <div className="px-3">
+        {Object.keys(archivePosts).map(archiveTitle => (
+          <BlogPostArchive
+            key={archiveTitle}
+            posts={archivePosts[archiveTitle]}
+            archiveTitle={archiveTitle}
+          />
+        ))}
       </div>
+    </div>
   )
 }
 
@@ -262,13 +247,21 @@ const LayoutSlug = props => {
     setHasCode(hasCode)
   }, [])
 
-  const commentEnable = siteConfig('COMMENT_TWIKOO_ENV_ID') || siteConfig('COMMENT_WALINE_SERVER_URL') || siteConfig('COMMENT_VALINE_APP_ID') ||
-    siteConfig('COMMENT_GISCUS_REPO') || siteConfig('COMMENT_CUSDIS_APP_ID') || siteConfig('COMMENT_UTTERRANCES_REPO') ||
-    siteConfig('COMMENT_GITALK_CLIENT_ID') || siteConfig('COMMENT_WEBMENTION_ENABLE')
+  const commentEnable =
+    siteConfig('COMMENT_TWIKOO_ENV_ID') ||
+    siteConfig('COMMENT_WALINE_SERVER_URL') ||
+    siteConfig('COMMENT_VALINE_APP_ID') ||
+    siteConfig('COMMENT_GISCUS_REPO') ||
+    siteConfig('COMMENT_CUSDIS_APP_ID') ||
+    siteConfig('COMMENT_UTTERRANCES_REPO') ||
+    siteConfig('COMMENT_GITALK_CLIENT_ID') ||
+    siteConfig('COMMENT_WEBMENTION_ENABLE')
 
   return (
     <>
-      <div className={`w-full ${fullWidth ? '' : 'xl:max-w-5xl'} ${hasCode ? 'xl:w-[73.15vw]' : ''} lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#18171d] dark:border-gray-600 article`}>
+      <div
+        className={`w-full ${fullWidth ? '' : 'xl:max-w-5xl'} ${hasCode ? 'xl:w-[73.15vw]' : ''} lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#18171d] dark:border-gray-600 article`}
+      >
         {lock && <ArticleLock validPassword={validPassword} />}
 
         {!lock && (
@@ -306,9 +299,8 @@ const LayoutSlug = props => {
               )}
             </article>
 
-            {fullWidth
-              ? null
-              : <div className={`${commentEnable && post ? '' : 'hidden'}`}>
+            {fullWidth ? null : (
+              <div className={`${commentEnable && post ? '' : 'hidden'}`}>
                 <hr className="my-4 border-dashed" />
 
                 {/* 评论互动 */}
@@ -322,7 +314,8 @@ const LayoutSlug = props => {
                     <AdSlot />
                   </div>
                 </div>
-              </div>}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -341,7 +334,7 @@ const Layout404 = props => {
   const { onLoading, fullWidth } = useGlobal()
   return (
     <>
-    {/* 主区块 */}
+      {/* 主区块 */}
       <main
         id="wrapper-outer"
         className={`flex-grow ${fullWidth ? '' : 'max-w-4xl'} w-screen mx-auto px-5`}
@@ -371,7 +364,7 @@ const Layout404 = props => {
                 <h1 className="error-title font-extrabold md:text-9xl text-7xl dark:text-white">
                   404
                 </h1>
-                <div className='dark:text-white'>请尝试站内搜索寻找文章</div>
+                <div className="dark:text-white">请尝试站内搜索寻找文章</div>
                 <Link href="/">
                   <button className="bg-blue-500 py-2 px-4 text-white shadow rounded-lg hover:bg-blue-600 hover:shadow-md duration-200 transition-all">
                     回到主页
@@ -401,38 +394,38 @@ const LayoutCategoryIndex = props => {
   const { locale } = useGlobal()
 
   return (
-      <div id="category-outer-wrapper" className="mt-8 px-5 md:px-0">
-        <div className="text-4xl font-extrabold dark:text-gray-200 mb-5">
-          {locale.COMMON.CATEGORY}
-        </div>
-        <div
-          id="category-list"
-          className="duration-200 flex flex-wrap m-10 justify-center"
-        >
-          {categoryOptions?.map(category => {
-            return (
-              <Link
-                key={category.name}
-                href={`/category/${category.name}`}
-                passHref
-                legacyBehavior
-              >
-                <div
-                  className={
-                    'group mr-5 mb-5 flex flex-nowrap items-center border bg-white text-2xl rounded-xl dark:hover:text-white px-4 cursor-pointer py-3 hover:text-white hover:bg-indigo-600 transition-all hover:scale-110 duration-150'
-                  }
-                >
-                  <HashTag className={'w-5 h-5 stroke-gray-500 stroke-2'} />
-                  {category.name}
-                  <div className="bg-[#f1f3f8] ml-1 px-2 rounded-lg group-hover:text-indigo-600 ">
-                    {category.count}
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
-        </div>
+    <div id="category-outer-wrapper" className="mt-8 px-5 md:px-0">
+      <div className="text-4xl font-extrabold dark:text-gray-200 mb-5">
+        {locale.COMMON.CATEGORY}
       </div>
+      <div
+        id="category-list"
+        className="duration-200 flex flex-wrap m-10 justify-center"
+      >
+        {categoryOptions?.map(category => {
+          return (
+            <Link
+              key={category.name}
+              href={`/category/${category.name}`}
+              passHref
+              legacyBehavior
+            >
+              <div
+                className={
+                  'group mr-5 mb-5 flex flex-nowrap items-center border bg-white text-2xl rounded-xl dark:hover:text-white px-4 cursor-pointer py-3 hover:text-white hover:bg-indigo-600 transition-all hover:scale-110 duration-150'
+                }
+              >
+                <HashTag className={'w-5 h-5 stroke-gray-500 stroke-2'} />
+                {category.name}
+                <div className="bg-[#f1f3f8] ml-1 px-2 rounded-lg group-hover:text-indigo-600 ">
+                  {category.count}
+                </div>
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+    </div>
   )
 }
 
@@ -446,38 +439,38 @@ const LayoutTagIndex = props => {
   const { locale } = useGlobal()
 
   return (
-      <div id="tag-outer-wrapper" className="px-5 mt-8 md:px-0">
-        <div className="text-4xl font-extrabold dark:text-gray-200 mb-5">
-          {locale.COMMON.TAGS}
-        </div>
-        <div
-          id="tag-list"
-          className="duration-200 flex flex-wrap space-x-5 space-y-5 m-10 justify-center"
-        >
-          {tagOptions.map(tag => {
-            return (
-              <Link
-                key={tag.name}
-                href={`/tag/${tag.name}`}
-                passHref
-                legacyBehavior
-              >
-                <div
-                  className={
-                    'group flex flex-nowrap items-center border bg-white text-2xl rounded-xl dark:hover:text-white px-4 cursor-pointer py-3 hover:text-white hover:bg-indigo-600 transition-all hover:scale-110 duration-150'
-                  }
-                >
-                  <HashTag className={'w-5 h-5 stroke-gray-500 stroke-2'} />
-                  {tag.name}
-                  <div className="bg-[#f1f3f8] ml-1 px-2 rounded-lg group-hover:text-indigo-600 ">
-                    {tag.count}
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
-        </div>
+    <div id="tag-outer-wrapper" className="px-5 mt-8 md:px-0">
+      <div className="text-4xl font-extrabold dark:text-gray-200 mb-5">
+        {locale.COMMON.TAGS}
       </div>
+      <div
+        id="tag-list"
+        className="duration-200 flex flex-wrap space-x-5 space-y-5 m-10 justify-center"
+      >
+        {tagOptions.map(tag => {
+          return (
+            <Link
+              key={tag.name}
+              href={`/tag/${tag.name}`}
+              passHref
+              legacyBehavior
+            >
+              <div
+                className={
+                  'group flex flex-nowrap items-center border bg-white text-2xl rounded-xl dark:hover:text-white px-4 cursor-pointer py-3 hover:text-white hover:bg-indigo-600 transition-all hover:scale-110 duration-150'
+                }
+              >
+                <HashTag className={'w-5 h-5 stroke-gray-500 stroke-2'} />
+                {tag.name}
+                <div className="bg-[#f1f3f8] ml-1 px-2 rounded-lg group-hover:text-indigo-600 ">
+                  {tag.count}
+                </div>
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+    </div>
   )
 }
 

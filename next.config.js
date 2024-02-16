@@ -102,7 +102,7 @@ module.exports = withBundleAnalyzer({
     config.resolve.alias['@theme-components'] = path.resolve(__dirname, 'themes', THEME)
     return config
   },
-  basePath: '/blog',
+  // basePath: '/blog',
   experimental: {
     scrollRestoration: true
   },

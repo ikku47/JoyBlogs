@@ -24,17 +24,15 @@ const Hero = props => {
       <div
         id="hero"
         style={{ zIndex: 1 }}
-        className={
-           `animate__animated animate__fadeIn animate__fast 
+        className={`animate__animated animate__fadeIn animate__fast 
            ${HEO_HERO_REVERSE ? 'xl:flex-row-reverse' : ''}
-           recent-post-top rounded-[12px] 2xl:px-5 recent-top-post-group max-w-[86rem] overflow-x-scroll w-full mx-auto flex-row flex-nowrap flex relative`
-        }
+           recent-post-top rounded-[12px] 2xl:px-5 recent-top-post-group max-w-[86rem] overflow-x-scroll w-full mx-auto flex-row flex-nowrap flex relative`}
       >
         {/* 左侧banner组 */}
         <BannerGroup {...props} />
 
         {/* 中间留白 */}
-        <div className='px-1.5 h-full'></div>
+        <div className="px-1.5 h-full"></div>
 
         {/* 右侧置顶文章组 */}
         <TopGroup {...props} />
@@ -122,7 +120,9 @@ function Banner(props) {
  * 英雄区左上角banner条中斜向滚动的图标
  */
 function TagsGroupBar() {
-  const groupIcons = siteConfig('HEO_GROUP_ICONS', null, CONFIG).concat(siteConfig('HEO_GROUP_ICONS', null, CONFIG))
+  const groupIcons = siteConfig('HEO_GROUP_ICONS', null, CONFIG).concat(
+    siteConfig('HEO_GROUP_ICONS', null, CONFIG)
+  )
 
   return (
     <div className="tags-group-all flex -rotate-[30deg] h-full">
@@ -258,7 +258,7 @@ function TopGroup(props) {
           )
         })}
       </div>
-      <TodayCard cRef={todayCardRef} siteInfo={siteInfo}/>
+      <TodayCard cRef={todayCardRef} siteInfo={siteInfo} />
     </div>
   )
 }
@@ -279,7 +279,11 @@ function getTopPosts({ latestPosts, allNavPages }) {
   let sortPosts = []
 
   // 排序方式
-  if (JSON.parse(siteConfig('HEO_HERO_RECOMMEND_POST_SORT_BY_UPDATE_TIME', null, CONFIG))) {
+  if (
+    JSON.parse(
+      siteConfig('HEO_HERO_RECOMMEND_POST_SORT_BY_UPDATE_TIME', null, CONFIG)
+    )
+  ) {
     sortPosts = Object.create(allNavPages).sort((a, b) => {
       const dateA = new Date(a?.lastEditedDate)
       const dateB = new Date(b?.lastEditedDate)
@@ -295,7 +299,11 @@ function getTopPosts({ latestPosts, allNavPages }) {
       break
     }
     // 查找标签
-    if (post?.tags?.indexOf(siteConfig('HEO_HERO_RECOMMEND_POST_TAG', null, CONFIG)) >= 0) {
+    if (
+      post?.tags?.indexOf(
+        siteConfig('HEO_HERO_RECOMMEND_POST_TAG', null, CONFIG)
+      ) >= 0
+    ) {
       topPosts.push(post)
     }
   }
@@ -360,8 +368,12 @@ function TodayCard({ cRef, siteInfo }) {
           className="z-10 flex justify-between w-full relative text-white p-10 items-end"
         >
           <div className="flex flex-col">
-            <div className="text-xs font-light">{siteConfig('HEO_HERO_TITLE_4', null, CONFIG)}</div>
-            <div className="text-3xl font-bold">{siteConfig('HEO_HERO_TITLE_5', null, CONFIG)}</div>
+            <div className="text-xs font-light">
+              {siteConfig('HEO_HERO_TITLE_4', null, CONFIG)}
+            </div>
+            <div className="text-3xl font-bold">
+              {siteConfig('HEO_HERO_TITLE_5', null, CONFIG)}
+            </div>
           </div>
           <div
             onClick={handleClickMore}
@@ -373,7 +385,7 @@ function TodayCard({ cRef, siteInfo }) {
               className={'w-6 h-6 mr-2 bg-white rounded-full stroke-indigo-400'}
             />
             <div id="more" className="select-none">
-            More recommendations
+              Learn More
             </div>
           </div>
         </div>
