@@ -154,8 +154,7 @@ const NavBar = props => {
             {activeIndex === 0 && <MenuListTop {...props} />}
             {activeIndex === 1 && (
               <h1 className="font-bold text-center text-light-400 dark:text-gray-400">
-                {siteConfig('AUTHOR') || siteConfig('TITLE')}{' '}
-                {siteConfig('BIO') && <>|</>} {siteConfig('BIO')}
+                {siteConfig('TITLE')}
               </h1>
             )}
           </div>
