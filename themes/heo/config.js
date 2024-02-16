@@ -5,10 +5,10 @@ const CONFIG = {
 
   // Top notification bar scrolling content on the homepage, leave empty if not needed []
   HEO_NOTICE_BAR: [
-    { title: 'Welcome to JoyBlogs', url: 'https://blog.tangly1024.com' },
+    { title: 'Welcome to JoyBlogs', url: 'https://joyboy.ae/' },
     {
       title: 'Keep up with the latest news related to us',
-      url: 'https://docs.tangly1024.com'
+      url: 'https://joyboy.ae/'
     }
   ],
 
@@ -18,12 +18,13 @@ const CONFIG = {
   HEO_HERO_BODY_REVERSE: false,
 
   // Hero area (top big card on the homepage)
-  HEO_HERO_TITLE_1: 'Share Programming',
-  HEO_HERO_TITLE_2: 'and Cognitive Thinking',
-  HEO_HERO_TITLE_3: 'TANGLY1024.COM',
-  HEO_HERO_TITLE_4: 'New Version Online',
-  HEO_HERO_TITLE_5: 'NotionNext4.0 Easy Customization Theme',
-  HEO_HERO_TITLE_LINK: 'https://tangly1024.com',
+  HEO_HERO_TITLE_1: 'Hire a full-fledged',
+  HEO_HERO_TITLE_2: 'software development team',
+  HEO_HERO_TITLE_3:
+    'We possess the capability to manage intricate mobile and web software projects throughout the entire process, from initial exploration to final delivery.',
+  HEO_HERO_TITLE_4: 'App development',
+  HEO_HERO_TITLE_5: 'Explore projects in UAE region',
+  HEO_HERO_TITLE_LINK: 'https://joyboy.ae/',
 
   // Display three featured categories in the hero area
   HEO_HERO_CATEGORY_1: {
