@@ -6,7 +6,7 @@ import { siteConfig } from '@/lib/config'
 const Logo = props => {
   const { siteInfo } = props
   return (
-    <Link href="/" passHref legacyBehavior>
+    <Link href="https://joyboy.ae/" passHref legacyBehavior>
       <div className="flex flex-nowrap justify-center items-center cursor-pointer font-extrabold">
         <LazyImage
           src={siteInfo?.icon}

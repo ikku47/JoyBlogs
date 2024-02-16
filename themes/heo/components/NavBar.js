@@ -163,7 +163,7 @@ const NavBar = props => {
           {/* 右侧固定 */}
           <div className="flex flex-shrink-0 justify-center items-center">
             {/* <RandomPostButton {...props} /> */}
-            <SearchButton {...props} />
+            {/* <SearchButton {...props} /> */}
             {!JSON.parse(siteConfig('THEME_SWITCH')) && (
               <div className="hidden md:block">
                 <DarkModeButton {...props} />
