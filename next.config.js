@@ -88,13 +88,13 @@ module.exports = withBundleAnalyzer({
   },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
-    // if (!dev && !isServer) {
-    //   Object.assign(config.resolve.alias, {
-    //     react: 'preact/compat',
-    //     'react-dom/test-utils': 'preact/test-utils',
-    //     'react-dom': 'preact/compat'
-    //   })
-    // }
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat'
+      })
+    }
     // 动态主题：添加 resolve.alias 配置，将动态路径映射到实际路径
     if (!isServer) {
       console.log('[加载主题]', path.resolve(__dirname, 'themes', THEME))
