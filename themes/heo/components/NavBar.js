@@ -138,7 +138,7 @@ const NavBar = props => {
         className={`z-20 h-16 top-0 w-full
             ${fixedNav ? 'fixed' : 'relative bg-transparent'} 
             ${textWhite ? 'text-white ' : 'text-black dark:text-white'}  
-            ${navBgWhite ? 'bg-white dark:bg-[#18171d]' : 'bg-transparent'}`}
+            ${navBgWhite ? 'bg-white dark:bg-[#06030b]' : 'bg-transparent'}`}
       >
         <div className="flex h-full mx-auto justify-between items-center max-w-[86rem] px-8">
           {/* 左侧logo */}

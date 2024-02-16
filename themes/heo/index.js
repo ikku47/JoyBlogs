@@ -61,7 +61,6 @@ const LayoutBase = props => {
       {/* 通知横幅 */}
       {router.route === '/' ? (
         <>
-          <NoticeBar />
           <Hero {...props} />
         </>
       ) : null}
@@ -84,7 +83,7 @@ const LayoutBase = props => {
   return (
     <div
       id="theme-heo"
-      className="bg-[#f7f9fe] dark:bg-[#18171d] h-full min-h-screen flex flex-col"
+      className="bg-[#f7f9fe] dark:bg-[#06030b] h-full min-h-screen flex flex-col"
     >
       <Style />
 
@@ -214,7 +213,7 @@ const LayoutArchive = props => {
   // 归档页顶部显示条，如果是默认归档则不显示。分类详情页显示分类列表，标签详情页显示当前标签
 
   return (
-    <div className="p-5 rounded-xl border dark:border-gray-600 max-w-6xl w-full bg-white dark:bg-[#1e1e1e]">
+    <div className="p-5 rounded-xl border dark:border-gray-600 max-w-6xl w-full bg-white dark:bg-[#1A1A1A]">
       {/* 文章分类条 */}
       <CategoryBar {...props} border={false} />
 
@@ -260,7 +259,7 @@ const LayoutSlug = props => {
   return (
     <>
       <div
-        className={`w-full ${fullWidth ? '' : 'xl:max-w-5xl'} ${hasCode ? 'xl:w-[73.15vw]' : ''} lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#18171d] dark:border-gray-600 article`}
+        className={`w-full ${fullWidth ? '' : 'xl:max-w-5xl'} ${hasCode ? 'xl:w-[73.15vw]' : ''} lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#06030b] dark:border-gray-600 article`}
       >
         {lock && <ArticleLock validPassword={validPassword} />}
 
