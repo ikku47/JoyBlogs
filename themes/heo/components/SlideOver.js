@@ -76,25 +76,11 @@ export default function SlideOver(props) {
                   <div className="flex h-full flex-col overflow-y-scroll bg-white dark:bg-[#06030b] py-6 shadow-xl">
                     <div className="relative mt-6 flex-1 flex-col space-y-3 px-4 sm:px-6 dark:text-white ">
                       <section className="space-y-2 flex flex-col">
-                        <div>功能</div>
-                        {/* 切换深色模式 */}
                         <DarkModeBlockButton />
                       </section>
 
-                      <section className="space-y-2 flex flex-col">
-                        <div>博客</div>
-                        {/* 导航按钮 */}
-                        <div className="gap-2 grid grid-cols-2">
-                          <Button title={'主页'} url={'/'} />
-                          <Button title={'关于'} url={'/about'} />
-                        </div>
-                        {/* 用户自定义菜单 */}
+                      <section className="space-y-10 flex flex-col">
                         <MenuListSide {...props} />
-                      </section>
-
-                      <section className="space-y-2 flex flex-col">
-                        <div>标签</div>
-                        <TagGroups tags={tagOptions} />
                       </section>
                     </div>
                   </div>
@@ -124,7 +110,6 @@ function DarkModeBlockButton() {
       }
     >
       <DarkModeButton cRef={darkModeRef} className="group-hover:text-white" />{' '}
-      显示模式
     </button>
   )
 }
