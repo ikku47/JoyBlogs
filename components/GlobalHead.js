@@ -30,9 +30,9 @@ const GlobalHead = props => {
       __html: ` {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
-      "headline": ${title},
+      "headline": "${title}",
       "image": [
-        ${image}
+        "${image}"
        ],
       "datePublished": "2024-02-05T08:00:00+08:00",
       "dateModified": "2024-02-05T09:20:00+08:00",
