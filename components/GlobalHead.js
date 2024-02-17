@@ -25,6 +25,26 @@ const GlobalHead = props => {
   const keywords = meta?.tags || siteConfig('KEYWORDS')
   const lang = siteConfig('LANG').replace('-', '_') // Facebook OpenGraph 要 zh_CN 這樣的格式才抓得到語言
   const category = meta?.category || siteConfig('KEYWORDS') // section 主要是像是 category 這樣的分類，Facebook 用這個來抓連結的分類
+  function addBlogJson() {
+    return {
+      __html: ` {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": ${title},
+      "image": [
+        ${image},
+       ],
+      "datePublished": "2024-02-05T08:00:00+08:00",
+      "dateModified": "2024-02-05T09:20:00+08:00",
+      "author": [{
+          "@type": "Person",
+          "name": "JoyBlogs",
+          "url": "https://www.joyboy.ae"
+        }]
+    }
+  }`
+    }
+  }
 
   return (
     <Head>
@@ -60,7 +80,11 @@ const GlobalHead = props => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:title" content={title} />
-
+      {meta?.isBlog && <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={addBlogJson()}
+        key="product-jsonld"
+      />}
       {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
         <>
           <link
@@ -77,7 +101,7 @@ const GlobalHead = props => {
       {siteConfig('COMMENT_WEBMENTION_ENABLE') &&
         siteConfig('COMMENT_WEBMENTION_AUTH') !== '' && (
           <link href={siteConfig('COMMENT_WEBMENTION_AUTH')} rel="me" />
-        )}
+      )}
 
       {JSON.parse(siteConfig('ANALYTICS_BUSUANZI_ENABLE')) && (
         <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -107,7 +131,6 @@ const getSEOMeta = (props, router, global) => {
   const { locale } = global
   const { post, tag, category, page } = props
   const keyword = router?.query?.s
-
   switch (router.route) {
     case '/':
       return {
@@ -208,6 +231,7 @@ const getSEOMeta = (props, router, global) => {
         description: post?.summary,
         type: post?.type,
         slug: post?.slug,
+        isBlog: true,
         image: post?.pageCoverThumbnail || siteConfig('HOME_BANNER_IMAGE'),
         category: post?.category?.[0],
         tags: post?.tags
