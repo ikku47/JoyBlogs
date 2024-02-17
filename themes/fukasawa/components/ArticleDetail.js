@@ -31,7 +31,7 @@ export default function ArticleDetail(props) {
         </div>
       )}
 
-      <article itemScope itemType="https://schema.org/Movie" className="subpixel-antialiased overflow-y-hidden py-10 px-5 lg:pt-24 md:px-32  dark:border-gray-700 bg-white dark:bg-hexo-black-gray" >
+      <article itemScope itemType="https://schema.org/Article" className="subpixel-antialiased overflow-y-hidden py-10 px-5 lg:pt-24 md:px-32  dark:border-gray-700 bg-white dark:bg-hexo-black-gray" >
 
         <header>
 

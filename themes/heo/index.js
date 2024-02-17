@@ -274,7 +274,7 @@ const LayoutSlug = props => {
               data-aos-once="false"
               data-aos-anchor-placement="top-bottom"
               itemScope
-              itemType="https://schema.org/Movie"
+              itemType="https://schema.org/Article"
               className="subpixel-antialiased overflow-y-hidden"
             >
               {/* Notion文章主体 */}
