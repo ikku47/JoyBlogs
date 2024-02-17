@@ -58,8 +58,8 @@ const QrCode = dynamic(() => import('@/components/QrCode'), { ssr: false })
  * @returns
  */
 const ShareButtons = ({ post }) => {
-  const router = useRouter()
-  const shareUrl = siteConfig('LINK') + router.asPath
+  // const router = useRouter()
+  const shareUrl = window.location.href;
   const title = post.title || siteConfig('TITLE')
   const image = post.pageCover
   const body = post?.title + ' | ' + title + ' ' + shareUrl + ' ' + post?.summary
