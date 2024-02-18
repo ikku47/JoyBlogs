@@ -1,7 +1,7 @@
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import Head from 'next/head'
-import { NextSeo } from 'next-seo';
+import { NextSeo, ArticleJsonLd } from 'next-seo';
 import { useRouter } from 'next/router'
 
 /**
@@ -106,6 +106,26 @@ const GlobalHead = props => {
           // ... Add other link tags as needed
         ]}
       />
+      {meta?.isBlog && <ArticleJsonLd
+      useAppDir={false}
+      url={url}
+      isAccessibleForFree={true}
+      title={title}
+      images={[
+        image
+      ]}
+      authorName={[
+        {
+          name: 'JoyBoy.ae',
+          url: 'https://www.joyboy.ae'
+        }
+      ]}
+      datePublished={new Date().toISOString()}
+      dateModified={new Date().toISOString()}
+      publisherName="JoyBlogs"
+      publisherLogo="https://www.joyboy.ae/jbl-f.svg"
+      description={description}
+    />}
     <Head>
       {/* <title>{title}</title>
       <meta name="theme-color" content={siteConfig('BACKGROUND_DARK')} />
@@ -139,11 +159,11 @@ const GlobalHead = props => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:title" content={title} /> */}
-      {meta?.isBlog && <script
+      {/* {meta?.isBlog && <script
         type="application/ld+json"
         dangerouslySetInnerHTML={addBlogJson()}
         key="product-jsonld"
-      />}
+      />} */}
       {/* {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
         <>
           <link
