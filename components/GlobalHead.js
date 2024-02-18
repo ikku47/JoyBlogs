@@ -50,8 +50,6 @@ const GlobalHead = props => {
     <Head>
       <title>{title}</title>
       <meta name="theme-color" content={siteConfig('BACKGROUND_DARK')} />
-      <meta name="title" content="Testing1x" />
-      <meta name="description" content="Testing2x" />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"
@@ -82,13 +80,11 @@ const GlobalHead = props => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:title" content={title} />
-      {meta?.isBlog && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={addBlogJson()}
-          key="product-jsonld"
-        />
-      )}
+      {meta?.isBlog && <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={addBlogJson()}
+        key="product-jsonld"
+      />}
       {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
         <>
           <link
@@ -105,7 +101,7 @@ const GlobalHead = props => {
       {siteConfig('COMMENT_WEBMENTION_ENABLE') &&
         siteConfig('COMMENT_WEBMENTION_AUTH') !== '' && (
           <link href={siteConfig('COMMENT_WEBMENTION_AUTH')} rel="me" />
-        )}
+      )}
 
       {JSON.parse(siteConfig('ANALYTICS_BUSUANZI_ENABLE')) && (
         <meta name="referrer" content="no-referrer-when-downgrade" />
