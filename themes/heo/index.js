@@ -5,7 +5,6 @@
  *  1. 开启方式 在blog.config.js 将主题配置为 `HEO`
  *  2. 更多说明参考此[文档](https://docs.tangly1024.com/article/notionnext-heo)
  */
-import Head from 'next/head';
 
 import CONFIG from './config'
 import { useEffect, useState } from 'react'
@@ -86,16 +85,6 @@ const LayoutBase = props => {
       id="theme-heo"
       className="bg-[#f7f9fe] dark:bg-[#06030b] h-full min-h-screen flex flex-col"
     >
-      <Head>
-        <title>
-          iPhone 12 XS Max For Sale in Colorado - Big Discounts | Apple
-        </title>
-        <meta
-          name="description"
-          content="Check out iPhone 12 XR Pro and iPhone 12 Pro Max. Visit your local store and for expert advice."
-          key="desc"
-        />
-      </Head>
       <Style />
 
       {/* 顶部嵌入 导航栏，首页放hero，文章页放文章详情 */}
