@@ -57,6 +57,7 @@ const GlobalHead = props => {
           url,
           title,
           description,
+          locale: lang,
           images: [
             {
               url: image,
