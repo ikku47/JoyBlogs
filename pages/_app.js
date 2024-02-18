@@ -18,8 +18,9 @@ import useAdjustStyle from '@/hooks/useAdjustStyle'
 // 各种扩展插件 这个要阻塞引入
 import ExternalPlugins from '@/components/ExternalPlugins'
 import GlobalHead from '@/components/GlobalHead'
-import BLOG from '@/blog.config'
+// import BLOG from '@/blog.config'
 
+const Layout = getGlobalLayoutByTheme("heo");
 /**
  * App挂载DOM 入口文件
  * @param {*} param0
@@ -29,27 +30,27 @@ const MyApp = ({ Component, pageProps }) => {
   // 一些可能出现 bug 的样式，可以统一放入该钩子进行调整
   useAdjustStyle();
 
-  const route = useRouter()
-  const queryParam = useMemo(() => {
-    return getQueryParam(route.asPath, 'theme') || pageProps?.NOTION_CONFIG?.THEME || BLOG.THEME
-  }, [route])
+  // const route = useRouter()
+  // const queryParam = useMemo(() => {
+  //   return getQueryParam(route.asPath, 'theme') || pageProps?.NOTION_CONFIG?.THEME || BLOG.THEME
+  // }, [route])
 
   // 整体布局
-  const GLayout = useCallback(
-    props => {
-      // 根据页面路径加载不同Layout文件
-      const Layout = getGlobalLayoutByTheme(queryParam)
-      return <Layout {...props} />
-    },
-    [queryParam]
-  )
+  // const GLayout = useCallback(
+  //   props => {
+  //     // 根据页面路径加载不同Layout文件
+  //     const Layout = getGlobalLayoutByTheme("heo")
+  //     return <Layout {...props} />
+  //   },
+  //   [queryParam]
+  // )
 
   return (
     <GlobalContextProvider {...pageProps}>
-      <GLayout {...pageProps}>
+      <Layout {...pageProps}>
         <GlobalHead {...pageProps}/>
         <Component {...pageProps} />
-      </GLayout>
+      </Layout>
       <ExternalPlugins {...pageProps} />
     </GlobalContextProvider>
   )

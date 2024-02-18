@@ -14,12 +14,7 @@ export const { THEMES = [] } = getConfig().publicRuntimeConfig
  * @returns
  */
 export const getGlobalLayoutByTheme = (themeQuery) => {
-  const layout = getLayoutNameByPath(-1)
-  if (themeQuery !== BLOG.THEME) {
-    return dynamic(() => import(`@/themes/${themeQuery}`).then(m => m[layout]), { ssr: true })
-  } else {
-    return ThemeComponents[layout]
-  }
+  return dynamic(() => import('@/themes/heo').then(m => m['LayoutBase']), { ssr: true })
 }
 
 /**
@@ -28,23 +23,24 @@ export const getGlobalLayoutByTheme = (themeQuery) => {
  * @param {*} router
  * @returns
  */
-export const getLayoutByTheme = ({ router, theme }) => {
-  const themeQuery = getQueryParam(router.asPath, 'theme') || theme
-  const layoutName = getLayoutNameByPath(router.pathname)
-
-  if (themeQuery !== BLOG.THEME) {
-    return dynamic(() => import(`@/themes/${themeQuery}`).then(m => {
-      setTimeout(() => {
-        checkThemeDOM()
-      }, 500);
-      return m[layoutName]
-    }), { ssr: true })
-  } else {
-    setTimeout(() => {
-      checkThemeDOM()
-    }, 100);
-    return ThemeComponents[layoutName]
-  }
+export const getLayoutByTheme = () => {
+  return ThemeComponents.LayoutIndex;
+  // const themeQuery = getQueryParam(router.asPath, 'theme') || theme
+  // const layoutName = getLayoutNameByPath(router.pathname)
+  // console.log(layoutName);
+  // if (themeQuery !== BLOG.THEME) {
+  //   return dynamic(() => import(`@/themes/${themeQuery}`).then(m => {
+  //     setTimeout(() => {
+  //       checkThemeDOM()
+  //     }, 500);
+  //     return m[layoutName]
+  //   }), { ssr: true })
+  // } else {
+  //   setTimeout(() => {
+  //     checkThemeDOM()
+  //   }, 100);
+  //   return ThemeComponents[layoutName]
+  // }
 }
 
 /**
