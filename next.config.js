@@ -102,12 +102,11 @@ module.exports = withBundleAnalyzer({
     config.resolve.alias['@theme-components'] = path.resolve(__dirname, 'themes', THEME)
     return config
   },
+  basePath: '/blog',
   experimental: {
     scrollRestoration: true
   },
   eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
     ignoreDuringBuilds: true
   },
   exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
