@@ -72,7 +72,7 @@ export default function PostHeader({ post, siteInfo }) {
                     <section className="flex-wrap shadow-text-md flex text-sm  justify-center md:justify-start mt-4 text-white dark:text-gray-400 font-light leading-8">
 
                         <div className='flex justify-center dark:text-gray-200 text-opacity-70'>
-                            <div className='mr-2'><WordCount /></div>
+                            {/* <div className='mr-2'><WordCount /></div> */}
                             {post?.type !== 'Page' && (
                                 <>
                                     <Link

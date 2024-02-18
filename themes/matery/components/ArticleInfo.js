@@ -37,7 +37,7 @@ export const ArticleInfo = (props) => {
                     <span className="hidden busuanzi_container_page_pv font-light mr-2">
                         <i className='mr-1 fas fa-eye' /><span className="busuanzi_value_page_pv" />
                     </span>
-                    <WordCount />
+                    {/* <WordCount /> */}
                 </>)}
             </div>
 

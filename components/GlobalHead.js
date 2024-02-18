@@ -1,6 +1,7 @@
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import Head from 'next/head'
+import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router'
 
 /**
@@ -47,8 +48,66 @@ const GlobalHead = props => {
   }
 
   return (
+    <>
+    <NextSeo
+        title={title}
+        description={description}
+        canonical={url}
+        openGraph={{
+          url,
+          title,
+          description,
+          images: [
+            {
+              url: image,
+              width: 800, // You should specify the width and height of the image
+              height: 600 // as required by Open Graph
+            }
+          ],
+          site_name: siteConfig('TITLE'),
+          type
+        }}
+        additionalMetaTags={[
+          {
+            name: 'viewport',
+            content: 'width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0'
+          },
+          {
+            name: 'robots',
+            content: 'follow, index'
+          },
+          {
+            name: 'keywords',
+            content: keywords
+          },
+          {
+            name: 'theme-color',
+            content: siteConfig('BACKGROUND_DARK')
+          },
+          {
+            name: 'google-site-verification',
+            content: siteConfig('SEO_GOOGLE_SITE_VERIFICATION')
+          },
+          {
+            name: 'baidu-site-verification',
+            content: siteConfig('SEO_BAIDU_SITE_VERIFICATION')
+          }
+          // ... Add other meta tags as needed
+        ]}
+        additionalLinkTags={[
+          {
+            rel: 'webmention',
+            href: `https://webmention.io/${siteConfig('COMMENT_WEBMENTION_HOSTNAME')}/webmention`
+          },
+          {
+            rel: 'pingback',
+            href: `https://webmention.io/${siteConfig('COMMENT_WEBMENTION_HOSTNAME')}/xmlrpc`
+          }
+          // ... Add other link tags as needed
+        ]}
+      />
     <Head>
-      <title>{title}</title>
+      {/* <title>{title}</title>
       <meta name="theme-color" content={siteConfig('BACKGROUND_DARK')} />
       <meta
         name="viewport"
@@ -79,13 +138,13 @@ const GlobalHead = props => {
       <meta property="og:type" content={type} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={title} /> */}
       {meta?.isBlog && <script
         type="application/ld+json"
         dangerouslySetInnerHTML={addBlogJson()}
         key="product-jsonld"
       />}
-      {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
+      {/* {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
         <>
           <link
             rel="webmention"
@@ -105,7 +164,7 @@ const GlobalHead = props => {
 
       {JSON.parse(siteConfig('ANALYTICS_BUSUANZI_ENABLE')) && (
         <meta name="referrer" content="no-referrer-when-downgrade" />
-      )}
+      )} */}
       {meta?.type === 'Post' && (
         <>
           <meta property="article:published_time" content={meta.publishDay} />
@@ -119,6 +178,7 @@ const GlobalHead = props => {
       )}
       {children}
     </Head>
+    </>
   )
 }
 
