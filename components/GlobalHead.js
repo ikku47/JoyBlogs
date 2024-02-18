@@ -1,7 +1,7 @@
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import Head from 'next/head'
-import { NextSeo, ArticleJsonLd } from 'next-seo';
+import { NextSeo, ArticleJsonLd } from 'next-seo'
 import { useRouter } from 'next/router'
 
 /**
@@ -49,7 +49,7 @@ const GlobalHead = props => {
 
   return (
     <>
-    <NextSeo
+      <NextSeo
         title={title}
         description={description}
         canonical={url}
@@ -71,7 +71,8 @@ const GlobalHead = props => {
         additionalMetaTags={[
           {
             name: 'viewport',
-            content: 'width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0'
+            content:
+              'width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0'
           },
           {
             name: 'robots',
@@ -107,28 +108,36 @@ const GlobalHead = props => {
           // ... Add other link tags as needed
         ]}
       />
-      {meta?.isBlog && <ArticleJsonLd
-      useAppDir={false}
-      url={url}
-      isAccessibleForFree={true}
-      title={title}
-      images={[
-        image
-      ]}
-      authorName={[
-        {
-          name: 'JoyBoy.ae',
-          url: 'https://www.joyboy.ae'
-        }
-      ]}
-      datePublished={new Date().toISOString()}
-      dateModified={new Date().toISOString()}
-      publisherName="JoyBlogs"
-      publisherLogo="https://www.joyboy.ae/jbl-f.svg"
-      description={description}
-    />}
-    <Head>
-      {/* <title>{title}</title>
+      {meta?.isBlog && (
+        <ArticleJsonLd
+          useAppDir={false}
+          url={url}
+          isAccessibleForFree={true}
+          title={title}
+          images={[image]}
+          authorName={[
+            {
+              name: 'JoyBoy.ae',
+              url: 'https://www.joyboy.ae'
+            }
+          ]}
+          datePublished={new Date().toISOString()}
+          dateModified={new Date().toISOString()}
+          publisherName="JoyBlogs"
+          publisherLogo="https://www.joyboy.ae/jbl-f.svg"
+          description={description}
+        />
+      )}
+      <Head>
+        <title>
+          iPhone 12 XS Max For Sale in Colorado - Big Discounts | Apple
+        </title>
+        <meta
+          name="description"
+          content="Check out iPhone 12 XR Pro and iPhone 12 Pro Max. Visit your local store and for expert advice."
+          key="desc"
+        />
+        {/* <title>{title}</title>
       <meta name="theme-color" content={siteConfig('BACKGROUND_DARK')} />
       <meta
         name="viewport"
@@ -160,12 +169,12 @@ const GlobalHead = props => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:title" content={title} /> */}
-      {/* {meta?.isBlog && <script
+        {/* {meta?.isBlog && <script
         type="application/ld+json"
         dangerouslySetInnerHTML={addBlogJson()}
         key="product-jsonld"
       />} */}
-      {/* {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
+        {/* {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
         <>
           <link
             rel="webmention"
@@ -186,19 +195,19 @@ const GlobalHead = props => {
       {JSON.parse(siteConfig('ANALYTICS_BUSUANZI_ENABLE')) && (
         <meta name="referrer" content="no-referrer-when-downgrade" />
       )} */}
-      {meta?.type === 'Post' && (
-        <>
-          <meta property="article:published_time" content={meta.publishDay} />
-          <meta property="article:author" content={siteConfig('AUTHOR')} />
-          <meta property="article:section" content={category} />
-          <meta
-            property="article:publisher"
-            content={siteConfig('FACEBOOK_PAGE')}
-          />
-        </>
-      )}
-      {children}
-    </Head>
+        {/* {meta?.type === 'Post' && (
+          <>
+            <meta property="article:published_time" content={meta.publishDay} />
+            <meta property="article:author" content={siteConfig('AUTHOR')} />
+            <meta property="article:section" content={category} />
+            <meta
+              property="article:publisher"
+              content={siteConfig('FACEBOOK_PAGE')}
+            />
+          </>
+        )} */}
+        {/* {children} */}
+      </Head>
     </>
   )
 }
@@ -215,7 +224,7 @@ const getSEOMeta = (props, router, global) => {
   switch (router.route) {
     case '/':
       return {
-        title: 'JoyBoy - Blogs',
+        title: 'JoyBoy - xBlogs',
         description: siteConfig('DESCRIPTION'),
         image: siteConfig('HOME_BANNER_IMAGE'),
         slug: '',
