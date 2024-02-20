@@ -13,13 +13,15 @@ export const { THEMES = [] } = getConfig().publicRuntimeConfig
  * @param {*} themeQuery
  * @returns
  */
-export const getGlobalLayoutByTheme = (themeQuery) => {
+export const getGlobalLayoutByTheme = themeQuery => {
   const layout = getLayoutNameByPath(-1)
-  if (themeQuery !== BLOG.THEME) {
-    return dynamic(() => import(`@/themes/${themeQuery}`).then(m => m[layout]), { ssr: true })
-  } else {
-    return ThemeComponents[layout]
-  }
+  return ThemeComponents[layout]
+
+  // if (themeQuery !== BLOG.THEME) {
+  //   return dynamic(() => import(`@/themes/${themeQuery}`).then(m => m[layout]), { ssr: true })
+  // } else {
+  //   return ThemeComponents[layout]
+  // }
 }
 
 /**
@@ -32,19 +34,24 @@ export const getLayoutByTheme = ({ router, theme }) => {
   const themeQuery = getQueryParam(router.asPath, 'theme') || theme
   const layoutName = getLayoutNameByPath(router.pathname)
 
-  if (themeQuery !== BLOG.THEME) {
-    return dynamic(() => import(`@/themes/${themeQuery}`).then(m => {
-      setTimeout(() => {
-        checkThemeDOM()
-      }, 500);
-      return m[layoutName]
-    }), { ssr: true })
-  } else {
-    setTimeout(() => {
-      checkThemeDOM()
-    }, 100);
-    return ThemeComponents[layoutName]
-  }
+  setTimeout(() => {
+    checkThemeDOM()
+  }, 100)
+  return ThemeComponents[layoutName]
+
+  // if (themeQuery !== BLOG.THEME) {
+  //   return dynamic(() => import(`@/themes/${themeQuery}`).then(m => {
+  //     setTimeout(() => {
+  //       checkThemeDOM()
+  //     }, 500);
+  //     return m[layoutName]
+  //   }), { ssr: true })
+  // } else {
+  //   setTimeout(() => {
+  //     checkThemeDOM()
+  //   }, 100);
+  //   return ThemeComponents[layoutName]
+  // }
 }
 
 /**
@@ -68,7 +75,7 @@ const checkThemeDOM = () => {
  * @param {*} path
  * @returns
  */
-export const getLayoutNameByPath = (path) => {
+export const getLayoutNameByPath = path => {
   switch (path) {
     case -1:
       return 'LayoutBase'
@@ -103,7 +110,7 @@ export const getLayoutNameByPath = (path) => {
  * @param updateDarkMode 更改主题ChangeState函数
  * @description 读取cookie中存的用户主题
  */
-export const initDarkMode = (updateDarkMode) => {
+export const initDarkMode = updateDarkMode => {
   // 查看用户设备浏览器是否深色模型
   let newDarkMode = isPreferDark()
 
@@ -121,7 +128,9 @@ export const initDarkMode = (updateDarkMode) => {
 
   updateDarkMode(newDarkMode)
   saveDarkModeToCookies(newDarkMode)
-  document.getElementsByTagName('html')[0].setAttribute('class', newDarkMode ? 'dark' : 'light')
+  document
+    .getElementsByTagName('html')[0]
+    .setAttribute('class', newDarkMode ? 'dark' : 'light')
 }
 
 /**
@@ -135,8 +144,15 @@ export function isPreferDark() {
   if (BLOG.APPEARANCE === 'auto') {
     // 系统深色模式或时间是夜间时，强行置为夜间模式
     const date = new Date()
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-    return prefersDarkMode || (BLOG.APPEARANCE_DARK_TIME && (date.getHours() >= BLOG.APPEARANCE_DARK_TIME[0] || date.getHours() < BLOG.APPEARANCE_DARK_TIME[1]))
+    const prefersDarkMode = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches
+    return (
+      prefersDarkMode ||
+      (BLOG.APPEARANCE_DARK_TIME &&
+        (date.getHours() >= BLOG.APPEARANCE_DARK_TIME[0] ||
+          date.getHours() < BLOG.APPEARANCE_DARK_TIME[1]))
+    )
   }
   return false
 }
@@ -150,10 +166,10 @@ export const loadDarkModeFromCookies = () => {
 }
 
 /**
-   * 保存深色模式
-   * @param newTheme
-   */
-export const saveDarkModeToCookies = (newTheme) => {
+ * 保存深色模式
+ * @param newTheme
+ */
+export const saveDarkModeToCookies = newTheme => {
   cookie.save('darkMode', newTheme, { path: '/' })
 }
 
@@ -166,9 +182,9 @@ export const loadThemeFromCookies = () => {
 }
 
 /**
-   * 保存默认主题
-   * @param newTheme
-   */
-export const saveThemeToCookies = (newTheme) => {
+ * 保存默认主题
+ * @param newTheme
+ */
+export const saveThemeToCookies = newTheme => {
   cookie.save('theme', newTheme, { path: '/' })
 }
