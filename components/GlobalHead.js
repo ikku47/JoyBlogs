@@ -26,23 +26,20 @@ const GlobalHead = props => {
   const keywords = meta?.tags || siteConfig('KEYWORDS')
   const lang = siteConfig('LANG').replace('-', '_') // Facebook OpenGraph 要 zh_CN 這樣的格式才抓得到語言
   const category = meta?.category || siteConfig('KEYWORDS') // section 主要是像是 category 這樣的分類，Facebook 用這個來抓連結的分類
-  function addBlogJson() {
+  function addSearchJson() {
     return {
       __html: ` {
       "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      "headline": "${title}",
-      "image": [
-        "${image}"
-       ],
-      "datePublished": "2024-02-05T08:00:00+08:00",
-      "dateModified": "2024-02-05T09:20:00+08:00",
-      "author": [{
-          "@type": "Person",
-          "name": "JoyBlogs",
-          "url": "https://www.joyboy.ae"
-        }]
-    }
+      "@type": "WebSite",
+      "url": "https://www.joyboy.ae/blog",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.joyboy.ae/blog/search/{search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
   }`
     }
   }
@@ -160,11 +157,11 @@ const GlobalHead = props => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:title" content={title} /> */}
-      {/* {meta?.isBlog && <script
+      {meta?.slug === '' && <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={addBlogJson()}
+        dangerouslySetInnerHTML={addSearchJson()}
         key="product-jsonld"
-      />} */}
+      />}
       {/* {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
         <>
           <link
