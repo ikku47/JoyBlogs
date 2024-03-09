@@ -157,11 +157,11 @@ const GlobalHead = props => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:title" content={title} /> */}
-      {meta?.slug === '' && <script
+      {/* {meta?.slug === '' && <script
         type="application/ld+json"
         dangerouslySetInnerHTML={addSearchJson()}
         key="product-jsonld"
-      />}
+      />} */}
       {/* {siteConfig('COMMENT_WEBMENTION_ENABLE') && (
         <>
           <link
