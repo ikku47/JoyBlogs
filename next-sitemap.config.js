@@ -6,7 +6,7 @@ const BLOG = require('./blog.config')
 module.exports = {
   siteUrl: BLOG.LINK,
   changefreq: 'daily',
-  priority: 0.7,
+  priority: 0.3,
   generateRobotsTxt: true,
   sitemapSize: 7000
   // ...other options
